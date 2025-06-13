@@ -9,5 +9,5 @@ phases:
        - git clone -b $REFERENCE_NAME codecommit::$REPO_REGION://$REPOSITORY_NAME
        - dt=$(date '+%d-%m-%Y-%H:%M:%S');
        - echo "$dt" 
-       - zip -yr $dt-$REPOSITORY_NAME-backup.zip ./
+       - zip -yr $dt-$REPOSITORY_NAME-$COMMIT_ID.zip ./
        - aws s3 cp $dt-$REPOSITORY_NAME-backup.zip s3://$BUCKET/$REPOSITORY_NAME/
