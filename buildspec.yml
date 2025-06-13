@@ -9,7 +9,7 @@ phases:
        - git clone -b $REFERENCE_NAME codecommit::$REPO_REGION://$REPOSITORY_NAME
        - dt=$(date '+%d-%m-%Y-%H:%M:%S');
        - echo "$dt"
-       - SHORT_COMMIT_ID=$($COMMIT_ID | cut -c1-8)
+       - SHORT_COMMIT_ID=$(echo "$COMMIT_ID" | cut -c1-8)
        - object=$dt-$REPOSITORY_NAME-$SHORT_COMMIT_ID
        - zip -yr $object.zip ./
        - aws s3 cp $object.zip s3://$BUCKET/$REPOSITORY_NAME/
