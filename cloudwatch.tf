@@ -41,6 +41,7 @@ resource "aws_cloudwatch_event_target" "this" {
       repositoryName = "$.detail.repositoryName",
       account        = "$.account",
       referenceName  = "$.detail.referenceName",
+      commitId       = "$.detail.commitId",
     }
     input_template = <<EOF
 {
@@ -64,6 +65,10 @@ resource "aws_cloudwatch_event_target" "this" {
         {
             "name": "ACCOUNT_ID",
             "value": <account>
+        },
+        {
+            "name": "COMMIT_ID",
+            "value": <commitId>
         }
     ]
 }
